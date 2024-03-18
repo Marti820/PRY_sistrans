@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "prestamo")
-@PrimaryKeyJoinColumn(name = "id")
 public class Prestamo {
 
     @Id

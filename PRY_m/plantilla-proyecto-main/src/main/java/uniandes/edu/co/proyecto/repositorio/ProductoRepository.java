@@ -20,7 +20,7 @@ public interface ProductoRepository extends JpaRepository<Producto,Integer> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO PRODUCTO (ID, CLIENTE) VALUES (PRODUCTO_ID.nextval, :cliente)", nativeQuery = true)
-    void insertProducto(@Param("id") Long id, @Param("cliente") Long cliente);
+    void insertProducto(@Param("cliente") Long cliente);
 
     @Modifying
     @Transactional

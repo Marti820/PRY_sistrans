@@ -23,7 +23,7 @@ public interface DireccionesRepository extends JpaRepository<Direccion,Integer> 
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO DIRECCIONES (ID, DIRECCION, CODIGO_POSTAL) VALUES(DIRECCIONES_ID.nextval, :direccion, :codigoPostal)", nativeQuery = true)
-    void insertarDireccion(@Param("id") Long id, @Param("direccion") String direccion, @Param("codigoPostal") Integer codigoPostal);
+    void insertarDireccion(@Param("direccion") String direccion, @Param("codigoPostal") Integer codigoPostal);
 
     @Modifying
     @Transactional
