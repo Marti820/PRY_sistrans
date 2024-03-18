@@ -28,7 +28,7 @@ public interface CiudadRepository extends JpaRepository<Ciudad,String> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE CIUDADES SET DEPARTAMENTO = :departamento WHERE CIUDAD = :ciudad", nativeQuery = true)
-    void actualizarDepartamentoCiudad(@Param("ciudad") String ciudad, @Param("departamento") String departamento);
+    void actualizarCiudad(@Param("ciudad") String ciudad, @Param("departamento") String departamento);
 
     @Modifying
     @Transactional

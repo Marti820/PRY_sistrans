@@ -105,6 +105,17 @@ public class Cliente {
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
-   
+    @Override
+    public String toString() {
+        return this.numero_Documento + "|" +
+                this.tipo_Documento + "|" +
+                this.nombre + "|" +
+                this.nacionalidad + "|" +
+                this.direcciones + "|" +
+                this.direccionElectronica + "|" +
+                this.telefono + "|" +
+                this.palabraClave + "|" +
+                this.tipoCliente;
+}
 }
 

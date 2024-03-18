@@ -29,5 +29,9 @@ public class Ciudad {
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
     }
-    
+    @Override
+    public String toString()
+    {
+        return this.ciudad+"|"+this.departamento;
+    }
 }
