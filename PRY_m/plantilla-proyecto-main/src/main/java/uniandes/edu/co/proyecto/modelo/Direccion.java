@@ -66,7 +66,11 @@ public class Direccion {
     }
 
     
-
+    @Override
+    public String toString()
+    {
+        return this.id+"|"+this.direccion+"|"+this.codigo_postal;
+    }
     
     
 }

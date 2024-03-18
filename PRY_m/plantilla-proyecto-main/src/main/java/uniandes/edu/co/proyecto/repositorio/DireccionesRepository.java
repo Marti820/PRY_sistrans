@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import jakarta.transaction.Transactional;
+import uniandes.edu.co.proyecto.modelo.CodigoPostal;
 import uniandes.edu.co.proyecto.modelo.Direccion;
 
 
@@ -18,22 +19,22 @@ public interface DireccionesRepository extends JpaRepository<Direccion,Integer> 
     Collection<Direccion> getDirecciones();
 
     @Query(value = "SELECT * FROM DIRECCIONES WHERE ID = :id", nativeQuery = true)
-    Direccion getDireccionById(@Param("id") Long id);
+    Direccion getDireccionById(@Param("id") Integer id);
 
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO DIRECCIONES (ID, DIRECCION, CODIGO_POSTAL) VALUES(DIRECCIONES_ID.nextval, :direccion, :codigoPostal)", nativeQuery = true)
-    void insertarDireccion(@Param("direccion") String direccion, @Param("codigoPostal") Integer codigoPostal);
+    void insertarDireccion(@Param("direccion") String direccion, @Param("codigoPostal") CodigoPostal codigoPostal);
 
     @Modifying
     @Transactional
     @Query(value = "UPDATE DIRECCIONES SET DIRECCION = :direccion, CODIGO_POSTAL = :codigoPostal WHERE ID = :id", nativeQuery = true)
-    void actualizarDireccion(@Param("id") Long id, @Param("direccion") String direccion, @Param("codigoPostal") Integer codigoPostal);
+    void actualizarDireccion(@Param("id") Integer id, @Param("direccion") String direccion, @Param("codigoPostal") CodigoPostal codigoPostal);
 
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM DIRECCIONES WHERE ID = :id", nativeQuery = true)
-    void eliminarDireccion(@Param("id") Long id);
+    void eliminarDireccion(@Param("id") Integer id);
 }
   
 
