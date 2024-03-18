@@ -11,25 +11,21 @@ import uniandes.edu.co.proyecto.modelo.Persona;
 
 
 public interface PersonaRepositoty extends JpaRepository<Persona, Integer> {
-    @Query (value = "SELECT * FROM persona", nativeQuery = true)
-    Collection<Persona> darPersonas();
-    
-    @Query (value = "SELECT * FROM persona WHERE numero_Documento = :numero_Documento", nativeQuery = true)
-    Persona darPersona(@Param("numero_Documento") int numero_Documento);
+    @Query(value = "SELECT * FROM PERSONA", nativeQuery = true)
+    Collection<Persona> getPersonas();
+
+    @Query(value = "SELECT * FROM PERSONA WHERE NUMERO_DOCUMENTO = :numeroDocumento", nativeQuery = true)
+    Persona getPersonaByNumeroDocumento(@Param("numeroDocumento") Long numeroDocumento);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO persona (numero_Documento) VALUES(:numero_Documento)", nativeQuery = true)
-    void insertarPersona(@Param("numero_Documento") int numero_Documento);
-    /* 
+    @Query(value = "INSERT INTO PERSONA (NUMERO_DOCUMENTO) VALUES (:numeroDocumento)", nativeQuery = true)
+    void insertarPersona(@Param("numeroDocumento") Long numeroDocumento);
+
     @Modifying
     @Transactional
-    @Query(value = "UPDATE persona SET numeroDocumento = :numeroDocumento WHERE id =:id", nativeQuery = true)
-    void actualizarPersona(@Param("id")int id,@Param("numeroDocumento") String numeroDocumento);*/
-    @Modifying
-    @Transactional
-    @Query(value = "DELETE FROM persona WHERE numero_Documento =:numero_Documento", nativeQuery = true)
-    void eliminarPersona(@Param("numero_Documento") int id);
+    @Query(value = "DELETE FROM PERSONA WHERE NUMERO_DOCUMENTO = :numeroDocumento", nativeQuery = true)
+    void eliminarPersona(@Param("numeroDocumento") Long numeroDocumento);
   
 }
 

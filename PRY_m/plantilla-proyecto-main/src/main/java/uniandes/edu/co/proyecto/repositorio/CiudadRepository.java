@@ -14,26 +14,25 @@ import uniandes.edu.co.proyecto.modelo.Ciudad;
 
 
 public interface CiudadRepository extends JpaRepository<Ciudad,String> {
-    @Query(value = "SELECT * FROM ciudades",nativeQuery = true)
+    @Query(value = "SELECT * FROM CIUDADES", nativeQuery = true)
     Collection<Ciudad> getCiudades();
 
-    @Query(value = "SELECT * FROM ciudades WHERE ciudad = :ciudad", nativeQuery = true )
-    Ciudad getCiudad(@Param("ciudad") String ciudadString);
+    @Query(value = "SELECT * FROM CIUDADES WHERE CIUDAD = :ciudad", nativeQuery = true)
+    Ciudad getCiudad(@Param("ciudad") String ciudad);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO ciudades (ciudad,departamento) VALUES(:ciudad, :departamento)", nativeQuery = true )
+    @Query(value = "INSERT INTO CIUDADES (CIUDAD, DEPARTAMENTO) VALUES(:ciudad, :departamento)", nativeQuery = true)
     void insertarCiudad(@Param("ciudad") String ciudad, @Param("departamento") String departamento);
 
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE CIUDADES SET DEPARTAMENTO = :departamento WHERE CIUDAD = :ciudad", nativeQuery = true)
+    void actualizarDepartamentoCiudad(@Param("ciudad") String ciudad, @Param("departamento") String departamento);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE ciudades SET departamento = :departamento WHERE ciudad =:ciudad", nativeQuery = true)
-    void actualizarCiudad(@Param("ciudad") String ciudad, @Param("departamento") String departamento);
-
-    @Modifying
-    @Transactional
-    @Query(value = "DELETE FROM ciudades WHERE ciudad =:ciudad", nativeQuery = true)
-    void eliminarCiudad(@Param("ciudad") Integer ciudad);
+    @Query(value = "DELETE FROM CIUDADES WHERE CIUDAD = :ciudad", nativeQuery = true)
+    void eliminarCiudad(@Param("ciudad") String ciudad);
   
 }

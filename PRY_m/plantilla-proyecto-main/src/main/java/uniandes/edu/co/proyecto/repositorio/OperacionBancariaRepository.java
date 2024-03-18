@@ -26,7 +26,7 @@ import java.util.Collection;
         @Modifying
         @Transactional
         @Query(value = "INSERT INTO OPERACION_BANCARIA (ID, HORA, FECHA, ID_ORIGEN, PUNTO_DE_ATENCION, VALOR, TIPO, ID_DESTINO) " +
-                "VALUES(:id, :hora, :fecha, :idOrigen, :puntoDeAtencion, :valor, :tipo, :idDestino)", nativeQuery = true)
+                "VALUES(OPERACION_ID.nextval, :hora, :fecha, :idOrigen, :puntoDeAtencion, :valor, :tipo, :idDestino)", nativeQuery = true)
         void insertarOperacionBancaria(@Param("id") Integer id, @Param("hora") Timestamp hora, @Param("fecha") Date fecha,
                                        @Param("idOrigen") Integer idOrigen, @Param("puntoDeAtencion") Integer puntoDeAtencion,
                                        @Param("valor") Double valor, @Param("tipo") String tipo, @Param("idDestino") Integer idDestino);

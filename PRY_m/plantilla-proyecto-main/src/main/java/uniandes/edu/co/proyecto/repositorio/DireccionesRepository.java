@@ -8,33 +8,33 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import jakarta.transaction.Transactional;
-import uniandes.edu.co.proyecto.modelo.CodigoPostal;
 import uniandes.edu.co.proyecto.modelo.Direccion;
 
 
 
 public interface DireccionesRepository extends JpaRepository<Direccion,Integer> {
-    @Query(value = "SELECT * FROM direcciones", nativeQuery = true )
+    
+    @Query(value = "SELECT * FROM DIRECCIONES", nativeQuery = true)
     Collection<Direccion> getDirecciones();
 
-    @Query(value = "SELECT * FROM direcciones WHERE id = :id", nativeQuery = true )
-    Direccion getDireccion(@Param("id") Integer id);
+    @Query(value = "SELECT * FROM DIRECCIONES WHERE ID = :id", nativeQuery = true)
+    Direccion getDireccionById(@Param("id") Long id);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO direcciones (id, direccion, codigoPostal) VALUES(DIRECCIONES_ID.nextval,:direccion, :codigoPostal)", nativeQuery = true )
-    void insertarDireccion(@Param("direccion") String direccion,@Param("codigoPostal") int codigoPostal);
-
-
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE direcciones SET direccion = :direccion, codigoPostal = :codigoPostal  WHERE id =:id", nativeQuery = true)
-    void actualizarDireccion(@Param("id") Integer id, @Param("direccion") String direccion, @Param("codigoPostal") int codigoPostal);
+    @Query(value = "INSERT INTO DIRECCIONES (ID, DIRECCION, CODIGO_POSTAL) VALUES(DIRECCIONES_ID.nextval, :direccion, :codigoPostal)", nativeQuery = true)
+    void insertarDireccion(@Param("id") Long id, @Param("direccion") String direccion, @Param("codigoPostal") Integer codigoPostal);
 
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM direcciones WHERE id =:id", nativeQuery = true)
-    void eliminarDireccion(@Param("id") Integer id);
-  
+    @Query(value = "UPDATE DIRECCIONES SET DIRECCION = :direccion, CODIGO_POSTAL = :codigoPostal WHERE ID = :id", nativeQuery = true)
+    void actualizarDireccion(@Param("id") Long id, @Param("direccion") String direccion, @Param("codigoPostal") Integer codigoPostal);
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM DIRECCIONES WHERE ID = :id", nativeQuery = true)
+    void eliminarDireccion(@Param("id") Long id);
 }
+  
+
 

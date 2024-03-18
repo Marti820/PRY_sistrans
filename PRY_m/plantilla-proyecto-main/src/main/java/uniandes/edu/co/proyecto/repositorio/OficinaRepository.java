@@ -8,31 +8,29 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import jakarta.transaction.Transactional;
-import uniandes.edu.co.proyecto.modelo.Direccion;
 import uniandes.edu.co.proyecto.modelo.Oficina;
 
 
 public interface OficinaRepository extends JpaRepository<Oficina,String> {
-    @Query(value = "SELECT * FROM oficina", nativeQuery = true )
-    Collection<Oficina> getOficina();
+    @Query(value = "SELECT * FROM OFICINA", nativeQuery = true)
+    Collection<Oficina> getOficinas();
 
-    @Query(value = "SELECT * FROM oficina WHERE NOMBRE = :NOMBRE", nativeQuery = true )
-    Oficina getOficina(@Param("NOMBRE") Integer NOMBRE);
-
-    @Modifying
-    @Transactional
-    @Query(value = "INSERT INTO oficina (nombre, direccion, puntosAtencion) VALUES(:nombre, :direccion, :puntosAtencion)", nativeQuery = true )
-    void insertarOficina(@Param("nombre") String nombre,@Param("direccion") int direccion, @Param("puntosAtencion") Integer puntosAtencion);
-
+    @Query(value = "SELECT * FROM OFICINA WHERE NOMBRE = :nombre", nativeQuery = true)
+    Oficina getOficinaByNombre(@Param("nombre") String nombre);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE oficina SET direccion = :direccion,  puntosAtencion= :puntosAtencion WHERE NOMBRE =:NOMBRE", nativeQuery = true)
-    void actualizarOficina(@Param("NOMBRE") String NOMBRE, @Param("direccion") int direccion,  @Param("puntosAtencion") Integer puntosAtencion);
+    @Query(value = "INSERT INTO OFICINA (NOMBRE, DIRECCION, NUM_PUNTOS_ATENCION) VALUES(:nombre, :direccion, :numPuntosAtencion)", nativeQuery = true)
+    void insertarOficina(@Param("nombre") String nombre, @Param("direccion") Long direccion, @Param("numPuntosAtencion") Integer numPuntosAtencion);
 
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM oficina WHERE NOMBRE =:NOMBRE", nativeQuery = true)
-    void eliminarOficina(@Param("NOMBRE") Integer NOMBRE);
+    @Query(value = "UPDATE OFICINA SET DIRECCION = :direccion, NUM_PUNTOS_ATENCION = :numPuntosAtencion WHERE NOMBRE = :nombre", nativeQuery = true)
+    void actualizarOficina(@Param("nombre") String nombre, @Param("direccion") Long direccion, @Param("numPuntosAtencion") Integer numPuntosAtencion);
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM OFICINA WHERE NOMBRE = :nombre", nativeQuery = true)
+    void eliminarOficina(@Param("nombre") String nombre);
   
 }
