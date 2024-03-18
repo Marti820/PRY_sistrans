@@ -10,7 +10,7 @@ import jakarta.transaction.Transactional;
 import uniandes.edu.co.proyecto.modelo.Persona;
 
 
-public interface PersonaRepositoty extends JpaRepository<Persona, Integer> {
+public interface PersonaRepository extends JpaRepository<Persona, Integer> {
     @Query(value = "SELECT * FROM PERSONA", nativeQuery = true)
     Collection<Persona> getPersonas();
 
