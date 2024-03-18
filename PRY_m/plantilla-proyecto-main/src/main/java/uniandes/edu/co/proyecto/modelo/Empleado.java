@@ -9,7 +9,7 @@ public class Empleado {
     //@GeneratedValue(strategy = GenerationType.AUTO)
     //private Integer id;
     @Id
-    private String numero_Documento;
+    private int numero_Documento;
     @OneToOne
     @JoinColumn(name="numero_Documento")//, referencedColumnName = "numero_Documento")
     @MapsId
@@ -46,10 +46,10 @@ public class Empleado {
     }
     public Empleado()
     {;}
-    public String getNumero_documento() {
+    public int getNumero_documento() {
         return numero_Documento;
     }
-    public void setNumero_documento(String numero_documento) {
+    public void setNumero_documento(int numero_documento) {
         this.numero_Documento = numero_documento;
     }
     public String getTipo_documento() {

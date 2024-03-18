@@ -9,9 +9,9 @@ public class Persona {
     //@GeneratedValue(strategy = GenerationType.AUTO)
     //private Integer id;
     @Id
-    private String numero_Documento;
+    private int numero_Documento;
     
-    public Persona(String numero_Documento) {
+    public Persona(int numero_Documento) {
        // this.id = id;
         this.numero_Documento = numero_Documento;
     }
@@ -24,10 +24,10 @@ public class Persona {
     public void setId(Integer id) {
         this.id = id;
     }*/
-    public String getNumeroDocumento() {
+    public int getNumeroDocumento() {
         return numero_Documento;
     }
-    public void setNumeroDocumento(String numeroDocumento) {
+    public void setNumeroDocumento(int numeroDocumento) {
         this.numero_Documento = numeroDocumento;
     }
     
