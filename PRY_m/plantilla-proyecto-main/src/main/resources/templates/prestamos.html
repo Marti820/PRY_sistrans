@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestamos</title>
+    <link rel="stylesheet"  type "text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div>
+        <h1>Lista de prestamos</h1>
+        <table class="table table-hover table-bordered">
+                <thead class="thead -dark">
+                    <tr>
+                        <th> ID</th>
+                        <th> Estado</th>
+                        <th> Tipo</th>
+                        <th> intereses</th>
+                        <th> cuotas</th>
+                        <th> valor_cuota</th>
+                        <th> monto</th>
+                        <th> dia_corte</th>
+                        <th> saldo_pendiente</th>
+                    </tr>
+                </thead>
+                <th:block th:each="prestamo:${prestamos}">
+                    <tr>
+                        <td th:text="${prestamo.id}"></td>
+                        <td th:text="${prestamo.estado}"></td>
+                        <td th:text="${prestamo.tipo}"></td>
+                        <td th:text="${prestamo.intereses}"></td>
+                        <td th:text="${prestamo.cuotas}"></td>
+                        <td th:text="${prestamo.valor_cuota}"></td>
+                        <td th:text="${prestamo.monto}"></td>
+                        <td th:text="${prestamo.dia_corte}"></td>
+                        <td th:text="${prestamo.saldo_pendiente}"></td>
+                        <td>
+                            <a th:href="@{prestamos/{id}/edit(id=${prestamo.id})}">
+                                Editar
+                            </a>
+                            
+                        </td>
+                    </tr>
+                </th:block>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primaty">Volver Atrás</a>
+        </div>
+    </div>
+</body>
+</html>

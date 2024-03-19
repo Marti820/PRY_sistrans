@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmento</title>
+    <link rel="stylesheet"  type "text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div th:fragment="prestamoForm(titulo)" class="container border boder-2 w-25">
+        <h1 class="text-center" th:text="${titulo}"></h1>
+        <form>
+            <label class="col-form-label">Producto</label>
+            <input class="form-control" type="text" id="producto"
+            name="producto" requiered th:value="${prestamo.producto}">
+
+            <label class="col-form-label">Estado</label>
+            <select class="form-control" id="estado"
+            name="estado" required> 
+            <option value="Solicitado" th:selected="${prestamo.estado eq 'Solicitado'}">
+                Solicitado
+            </option>
+            <option value="Aprobado" th:selected="${prestamo.estado eq 'Aprobado'}">
+                Aprobado
+            </option>
+            <option value="Rechazado" th:selected="${prestamo.estado eq 'Reachazado'}">
+                Rechazado
+            </option>
+            <option value="Pagado" th:selected="${prestamo.estado eq 'Pagado'}">
+                Pagado
+            </option>
+        </select>
+
+            <label class="col-form-label">Tipo</label>
+            <input class="form-control" type="text" id="tipo"
+            name="tipo" requiered th:value="${prestamo.tipo}">
+
+            <label class="col-form-label">Intereses</label>
+            <input class="form-control" type="number" id="intereses"
+            name="intereses" requiered th:value="${prestamo.intereses}">
+
+            <label class="col-form-label">Cuotas</label>
+            <input class="form-control" type="nuumber" id="cuotas"
+            name="cuotas" requiered th:value="${prestamo.cuotas}">
+
+            <label class="col-form-label">Valor_cuota</label>
+            <input class="form-control" type="number" id="valor_cuota"
+            name="valor_cuota" requiered th:value="${prestamo.valor_cuota}">
+
+            <label class="col-form-label">Monto</label>
+            <input class="form-control" type="number" id="monto"
+            name="monto" requiered th:value="${prestamo.monto}">
+
+            <label class="col-form-label">Dia_corte</label>
+            <input class="form-control" type="text" id="dia_Corte"
+            name="dia_Corte" requiered th:value="${prestamo.dia_Corte}">
+
+            <label class="col-form-label">Saldo_pendiente</label>
+            <input class="form-control" type="number" id="saldo_Pendiente"
+            name="saldo_Pendiente" requiered th:value="${prestamo.saldo_Pendiente}">
+        </form>
+    </div>
+</body>
+</html>
