@@ -55,4 +55,30 @@ public class CuentaController {
         cuentasRepository.eliminarCuenta(id);
         return "redirect:/cuentas";
     }
-}
+
+
+    @GetMapping("/cuentas/{id}/desactivar")
+    public String cambiarEstadoCuenta(
+            @PathVariable("id") Integer id,
+            @PathVariable("nuevoEstado") String nuevoEstado,
+            Model model
+    ) {
+        Cuenta cuenta = cuentasRepository.getCuenta(id);
+        if (cuenta != null) {
+            
+            if (("cerrada".equalsIgnoreCase(nuevoEstado) && cuenta.getDinero() == 0 && "activa".equalsIgnoreCase(cuenta.getEstado())) ||
+                    ("desactivada".equalsIgnoreCase(nuevoEstado) && "activa".equalsIgnoreCase(cuenta.getEstado()))) {
+                cuenta.setEstado(nuevoEstado);
+                cuentasRepository.actualizarCuenta(id, cuenta.getEstado(), cuenta.getTipo(), cuenta.getDinero());
+                return "redirect:/cuentas";
+            } else {
+
+                model.addAttribute("error", "No se pudo cambiar el estado de la cuenta debido a condiciones no cumplidas.");
+                return "redirect:/cuentas";
+            }
+        } else {
+
+            model.addAttribute("error", "La cuenta no existe.");
+            return "redirect:/cuentas";
+        }
+}}
