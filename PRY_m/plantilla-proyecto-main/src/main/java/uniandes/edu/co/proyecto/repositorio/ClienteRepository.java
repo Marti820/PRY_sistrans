@@ -17,7 +17,7 @@ public interface ClienteRepository extends JpaRepository<Cliente,Integer> {
     Collection<Cliente> getClientes();
 
     @Query(value = "SELECT * FROM CLIENTE WHERE NUMERO_DOCUMENTO = :numeroDocumento", nativeQuery = true)
-    Cliente getClienteByNumeroDocumento(@Param("numeroDocumento") Long numeroDocumento);
+    Cliente getClienteByNumeroDocumento(@Param("numeroDocumento") int numeroDocumento);
 
     @Modifying
     @Transactional
@@ -25,10 +25,10 @@ public interface ClienteRepository extends JpaRepository<Cliente,Integer> {
             "DIRECCION_ELECTRONICA, TELEFONO, PALABRA_CLAVE, TIPO_CLIENTE) " +
             "VALUES(:numeroDocumento, :tipoDocumento, :nombre, :nacionalidad, :direcciones, " +
             ":direccionElectronica, :telefono, :palabraClave, :tipoCliente)", nativeQuery = true)
-    void insertarCliente(@Param("numeroDocumento") Long numeroDocumento, @Param("tipoDocumento") String tipoDocumento,
+    void insertarCliente(@Param("numeroDocumento") int numeroDocumento, @Param("tipoDocumento") String tipoDocumento,
                          @Param("nombre") String nombre, @Param("nacionalidad") String nacionalidad,
-                         @Param("direcciones") Long direcciones, @Param("direccionElectronica") String direccionElectronica,
-                         @Param("telefono") Long telefono, @Param("palabraClave") String palabraClave,
+                         @Param("direcciones") int direcciones, @Param("direccionElectronica") String direccionElectronica,
+                         @Param("telefono") int telefono, @Param("palabraClave") String palabraClave,
                          @Param("tipoCliente") String tipoCliente);
 
     @Modifying
@@ -37,16 +37,16 @@ public interface ClienteRepository extends JpaRepository<Cliente,Integer> {
             "NACIONALIDAD = :nacionalidad, DIRECCIONES = :direcciones, DIRECCION_ELECTRONICA = :direccionElectronica, " +
             "TELEFONO = :telefono, PALABRA_CLAVE = :palabraClave, TIPO_CLIENTE = :tipoCliente " +
             "WHERE NUMERO_DOCUMENTO = :numeroDocumento", nativeQuery = true)
-    void actualizarCliente(@Param("numeroDocumento") Long numeroDocumento, @Param("tipoDocumento") String tipoDocumento,
+    void actualizarCliente(@Param("numeroDocumento") int numeroDocumento, @Param("tipoDocumento") String tipoDocumento,
                            @Param("nombre") String nombre, @Param("nacionalidad") String nacionalidad,
-                           @Param("direcciones") Long direcciones, @Param("direccionElectronica") String direccionElectronica,
-                           @Param("telefono") Long telefono, @Param("palabraClave") String palabraClave,
+                           @Param("direcciones") int direcciones, @Param("direccionElectronica") String direccionElectronica,
+                           @Param("telefono") int telefono, @Param("palabraClave") String palabraClave,
                            @Param("tipoCliente") String tipoCliente);
 
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM CLIENTE WHERE NUMERO_DOCUMENTO = :numeroDocumento", nativeQuery = true)
-    void eliminarCliente(@Param("numeroDocumento") Long numeroDocumento);
+    void eliminarCliente(@Param("numeroDocumento") int numeroDocumento);
 
 
 }

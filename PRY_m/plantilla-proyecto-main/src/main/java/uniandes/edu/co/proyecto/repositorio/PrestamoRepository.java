@@ -27,7 +27,7 @@ public interface PrestamoRepository extends JpaRepository<Prestamo, Integer> {
     void insertarPrestamo(@Param("id") Integer id, @Param("estado") String estado, @Param("tipo") String tipo,
                           @Param("interes") Double interes, @Param("cuotas") Integer cuotas,
                           @Param("valorCuota") Double valorCuota, @Param("monto") Integer monto,
-                          @Param("diaCorte") Integer diaCorte, @Param("saldoPendiente") Integer saldoPendiente);
+                          @Param("diaCorte") String diaCorte, @Param("saldoPendiente") Double saldoPendiente);
 
     @Modifying
     @Transactional

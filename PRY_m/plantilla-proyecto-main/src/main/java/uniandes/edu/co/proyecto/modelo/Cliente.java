@@ -1,4 +1,3 @@
-
 package uniandes.edu.co.proyecto.modelo;
 
 
@@ -24,12 +23,12 @@ public class Cliente {
     @JoinColumn(name="direcciones", referencedColumnName = "id")
     private Direccion direcciones;
     private String direccionElectronica;
-    private String telefono;
+    private int telefono;
     private String palabraClave;
     private String tipoCliente;
 
     public Cliente(Persona persona, String tipoDocumento, String nombre, String nacionalidad,
-            Direccion direccion, String direccionElectronica, String telefono, String palabraClave,
+    Direccion direccion, String direccionElectronica, int telefono, String palabraClave,
             String tipoCliente) {
         //this.id = id;
         this.persona = persona;
@@ -81,10 +80,10 @@ public class Cliente {
     public void setDireccionElectronica(String direccionElectronica) {
         this.direccionElectronica = direccionElectronica;
     }
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
     public String getPalabraClave() {
@@ -118,4 +117,3 @@ public class Cliente {
                 this.tipoCliente;
 }
 }
-
