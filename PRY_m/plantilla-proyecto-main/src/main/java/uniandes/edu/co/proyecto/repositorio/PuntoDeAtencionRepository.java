@@ -15,25 +15,25 @@ public interface PuntoDeAtencionRepository extends JpaRepository<PuntoDeAtencion
     Collection<PuntoDeAtencion> getPuntosDeAtencion();
 
     @Query(value = "SELECT * FROM PUNTO_DE_ATENCION WHERE ID = :id", nativeQuery = true)
-    PuntoDeAtencion getPuntoDeAtencionById(@Param("id") Long id);
+    PuntoDeAtencion getPuntoDeAtencionById(@Param("id") int id);
 
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO PUNTO_DE_ATENCION (ID, TIPO, LOCALIZACION, OFICINA) " +
             "VALUES (PUNTO_ATENCION_ID.nextval, :tipo, :localizacion, :oficina)", nativeQuery = true)
     void insertPuntoDeAtencion(@Param("tipo") String tipo,
-                               @Param("localizacion") Long localizacion, @Param("oficina") String oficina);
+                               @Param("localizacion") int localizacion, @Param("oficina") String oficina);
 
     @Modifying
     @Transactional
     @Query(value = "UPDATE PUNTO_DE_ATENCION SET TIPO = :tipo, LOCALIZACION = :localizacion, OFICINA = :oficina " +
             "WHERE ID = :id", nativeQuery = true)
-    void updatePuntoDeAtencion(@Param("id") Long id, @Param("tipo") String tipo,
-                               @Param("localizacion") Long localizacion, @Param("oficina") String oficina);
+    void updatePuntoDeAtencion(@Param("id") int id, @Param("tipo") String tipo,
+                               @Param("localizacion") int localizacion, @Param("oficina") String oficina);
 
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM PUNTO_DE_ATENCION WHERE ID = :id", nativeQuery = true)
-    void deletePuntoDeAtencion(@Param("id") Long id);
+    void deletePuntoDeAtencion(@Param("id") int id);
 }
 
