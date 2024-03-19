@@ -19,13 +19,13 @@ public class EmpleadoController {
     @Autowired
     private EmpleadoRepository empleadoRepository;
 
-    @GetMapping("/empleadoes")
-    public String empleadoes(Model model) {
+    @GetMapping("/empleados")
+    public String empleados(Model model) {
         model.addAttribute("numero_Documento",empleadoRepository.getEmpleados());
         return model.toString();
     }
 
-    @GetMapping("/empleadoes/new")
+    @GetMapping("/empleados/new")
     public String empleadoForm(Model model){
         model.addAttribute("empleado", new Empleado() {
             
@@ -34,38 +34,38 @@ public class EmpleadoController {
 
     }
 
-    @PostMapping("/empleadoes/new/save")
+    @PostMapping("/empleados/new/save")
     public String empleadoGuardar(@ModelAttribute Empleado empleado){
       empleadoRepository.insertarEmpleado(empleado.getNumero_documento(),empleado.getTipo_documento(),empleado.getNombre(),empleado.getNacionalidad(),empleado.getDireccion().getId(),
       empleado.getDireccion_Electronica(),empleado.getTelefono(),empleado.getPalabra_Clave(),empleado.getOficina().getNombre(),empleado.getSueldo(),empleado.getTipoEmpleado()
       );
-      return "redirect:/empleadoes";
+      return "redirect:/empleados";
     }
 
-    @GetMapping("/empleadoes/{numero_Documento}/edit")
+    @GetMapping("/empleados/{numero_Documento}/edit")
     public String empleadoEditarForm(@PathVariable("numero_Documento") Integer numero_Documento, Model model){
         Empleado empleado = empleadoRepository.getEmpleadoByNumeroDocumento(numero_Documento);
         if (empleado != null){
             model.addAttribute("empleado", empleado);
             return "empleadoEditar";}
             else{
-                return "redirect:/empleadoes";
+                return "redirect:/empleados";
             }
 
     }
-    @PostMapping("/empleadoes/{numero_Documento}/edit/save")
+    @PostMapping("/empleados/{numero_Documento}/edit/save")
     public String empleadoEditarGuardar(@PathVariable("numero_Documento") Integer numero_Documento, @ModelAttribute Empleado empleado){
         empleadoRepository.actualizarEmpleado(numero_Documento,empleado.getTipo_documento(),empleado.getNombre(),empleado.getNacionalidad(),empleado.getDireccion().getId(),empleado.getDireccion_Electronica(),empleado.getTelefono(),empleado.getPalabra_Clave(),empleado.getOficina().getNombre(),empleado.getSueldo(),empleado.getTipoEmpleado()
         );
-        return "redirect:/empleadoes";
+        return "redirect:/empleados";
 
 
     }
 
-    @GetMapping("/empleadoes/{numero_Documento}/delete")
+    @GetMapping("/empleados/{numero_Documento}/delete")
     public String empleadoEliminar(@PathVariable("numero_Documento")Integer numero_Documento){
         empleadoRepository.eliminarEmpleado(numero_Documento);
-        return "redirect:/empleadoes";
+        return "redirect:/empleados";
 
     }
     }
