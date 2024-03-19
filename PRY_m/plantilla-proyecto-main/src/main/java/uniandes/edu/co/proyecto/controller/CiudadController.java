@@ -31,7 +31,7 @@ public class CiudadController {
             
         });
         return "ciudadNuevo";
-                                                     
+
     }
 
     @PostMapping("/ciudades/new/save")

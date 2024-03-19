@@ -30,11 +30,7 @@ public class Persona {
     public void setNumeroDocumento(int numeroDocumento) {
         this.numero_Documento = numeroDocumento;
     }
-    @Override
-    public String toString()
-    {
-        return this.numero_Documento+"|";
-    }
+    
     
 }
 

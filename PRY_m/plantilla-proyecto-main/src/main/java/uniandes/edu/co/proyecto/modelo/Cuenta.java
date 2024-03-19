@@ -80,12 +80,8 @@ public class Cuenta {
         this.dinero = dinero;
     }
     
-    public String toString() {
-        return this.id + "|" +
-                this.estado + "|" +
-                this.tipo + "|" +   
-                this.dinero;
-    }
 
-    
+
+
+   
 }

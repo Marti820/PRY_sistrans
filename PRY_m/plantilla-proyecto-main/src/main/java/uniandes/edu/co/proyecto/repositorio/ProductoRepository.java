@@ -15,21 +15,21 @@ public interface ProductoRepository extends JpaRepository<Producto,Integer> {
     Collection<Producto> getProductos();
 
     @Query(value = "SELECT * FROM PRODUCTO WHERE ID = :id", nativeQuery = true)
-    Producto getProductoById(@Param("id") int id);
+    Producto getProductoById(@Param("id") Long id);
 
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO PRODUCTO (ID, CLIENTE) VALUES (PRODUCTO_ID.nextval, :cliente)", nativeQuery = true)
-    void insertProducto(@Param("cliente") int cliente);
+    void insertProducto(@Param("cliente") Long cliente);
 
     @Modifying
     @Transactional
     @Query(value = "UPDATE PRODUCTO SET CLIENTE = :cliente WHERE ID = :id", nativeQuery = true)
-    void updateProductoCliente(@Param("id") int id, @Param("cliente") int cliente);
+    void updateProductoCliente(@Param("id") Long id, @Param("cliente") Long cliente);
 
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM PRODUCTO WHERE ID = :id", nativeQuery = true)
-    void deleteProducto(@Param("id") int id);
+    void deleteProducto(@Param("id") Long id);
   
 }

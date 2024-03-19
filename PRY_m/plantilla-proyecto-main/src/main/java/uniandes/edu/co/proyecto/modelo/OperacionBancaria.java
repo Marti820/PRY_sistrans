@@ -1,5 +1,8 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import java.security.Timestamp;
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -13,8 +16,8 @@ public class OperacionBancaria {
     @GeneratedValue(strategy=GenerationType.AUTO)
 
     private Integer id;
-    private LocalTime hora;
-    private LocalDate fecha;
+    private java.sql.Timestamp hora;
+    private Date fecha;
     @ManyToOne
     @JoinColumn(name="id_Origen", referencedColumnName = "id")
     private Producto id_Origen;
@@ -26,8 +29,8 @@ public class OperacionBancaria {
     private PuntoDeAtencion punto_de_Atencion;
     private int valor;
     private String tipo;
-    public OperacionBancaria(Integer id, LocalTime hora, LocalDate fecha, Producto idOrigen, Producto idDestino,
-            PuntoDeAtencion puntoAtencion, int valor, String tipo) {
+    public OperacionBancaria(Integer id, java.sql.Timestamp hora, Date fecha, Producto idOrigen, Producto idDestino,
+            PuntoDeAtencion puntoAtencion,Integer valor, String tipo) {
         this.id = id;
         this.hora = hora;
         this.fecha = fecha;
@@ -37,22 +40,24 @@ public class OperacionBancaria {
         this.valor = valor;
         this.tipo = tipo;
     }
+    public OperacionBancaria() {
+    }
     public Integer getId() {
         return id;
     }
     public void setId(Integer id) {
         this.id = id;
     }
-    public LocalTime getHora() {
+    public java.sql.Timestamp getHora() {
         return hora;
     }
-    public void setHora(LocalTime hora) {
+    public void setHora(java.sql.Timestamp hora) {
         this.hora = hora;
     }
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
     public Producto getId_Origen() {
@@ -73,10 +78,10 @@ public class OperacionBancaria {
     public void setPunto_de_Atencion(PuntoDeAtencion punto_de_Atencion) {
         this.punto_de_Atencion = punto_de_Atencion;
     }
-    public int getValor() {
+    public Integer getValor() {
         return valor;
     }
-    public void setValor(int valor) {
+    public void setValor(Integer valor) {
         this.valor = valor;
     }
     public String getTipo() {

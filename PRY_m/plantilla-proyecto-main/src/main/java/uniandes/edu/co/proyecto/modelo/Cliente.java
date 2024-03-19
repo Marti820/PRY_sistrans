@@ -24,12 +24,12 @@ public class Cliente {
     @JoinColumn(name="direcciones", referencedColumnName = "id")
     private Direccion direcciones;
     private String direccionElectronica;
-    private int telefono;
+    private String telefono;
     private String palabraClave;
     private String tipoCliente;
 
     public Cliente(Persona persona, String tipoDocumento, String nombre, String nacionalidad,
-    Direccion direccion, String direccionElectronica, int telefono, String palabraClave,
+            Direccion direccion, String direccionElectronica, String telefono, String palabraClave,
             String tipoCliente) {
         //this.id = id;
         this.persona = persona;
@@ -81,10 +81,10 @@ public class Cliente {
     public void setDireccionElectronica(String direccionElectronica) {
         this.direccionElectronica = direccionElectronica;
     }
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     public String getPalabraClave() {
