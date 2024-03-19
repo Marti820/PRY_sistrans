@@ -56,6 +56,10 @@ public class CodigoPostal {
     public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
     }
-
+    @Override
+    public String toString() {
+        return this.codigo + "|" + this.ciudad.getCiudad();
+                
+}
     
 }
