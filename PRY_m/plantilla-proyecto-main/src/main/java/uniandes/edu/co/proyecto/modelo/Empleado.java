@@ -21,7 +21,7 @@ public class Empleado {
     @JoinColumn(name="direccion", referencedColumnName = "id")
     private Direccion direccion;
     private String direccion_Electronica;
-    private String telefono;
+    private Integer telefono;
     private String palabra_Clave;
     @ManyToOne
     @JoinColumn(name="oficina", referencedColumnName = "nombre")
@@ -29,7 +29,7 @@ public class Empleado {
     private Integer sueldo;
     private String tipoEmpleado;
     public Empleado(Persona persona, String tipoDocumento, String nombre, String nacionalidad,
-            Direccion direccion, String direccionElectronica, String telefono, String palabraClave, Oficina oficina,
+            Direccion direccion, String direccionElectronica, Integer telefono, String palabraClave, Oficina oficina,
             Integer sueldo, String tipoEmpleado) {
         
         this.persona = persona;
@@ -82,10 +82,10 @@ public class Empleado {
     public void setDireccion_Electronica(String direccion_Electronica) {
         this.direccion_Electronica = direccion_Electronica;
     }
-    public String getTelefono() {
+    public Integer getTelefono() {
         return telefono;
     }
-    public void setTelefono(String telefono) {
+    public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
     public String getPalabra_Clave() {
@@ -111,6 +111,13 @@ public class Empleado {
     }
     public void setTipoEmpleado(String tipoEmpleado) {
         this.tipoEmpleado = tipoEmpleado;
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.numero_Documento+"|"+this.persona+"|"+this.tipo_documento+"|"+this.nombre+"|"+this.nacionalidad
+        +"|"+this.direccion+"|"+this.direccion_Electronica+"|"+this.telefono+"|"+this.palabra_Clave+"|"+this.oficina+"|"+this.sueldo+"|"+this.tipoEmpleado;
     }
     
 }

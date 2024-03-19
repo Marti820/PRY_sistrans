@@ -15,7 +15,7 @@ public interface EmpleadoRepository extends JpaRepository<Empleado,Integer>{
     Collection<Empleado> getEmpleados();
 
     @Query(value = "SELECT * FROM EMPLEADO WHERE NUMERO_DOCUMENTO = :numeroDocumento", nativeQuery = true)
-    Empleado getEmpleadoByNumeroDocumento(@Param("numeroDocumento") Long numeroDocumento);
+    Empleado getEmpleadoByNumeroDocumento(@Param("numeroDocumento") Integer numeroDocumento);
 
     @Modifying
     @Transactional
@@ -23,11 +23,11 @@ public interface EmpleadoRepository extends JpaRepository<Empleado,Integer>{
             "DIRECCION_ELECTRONICA, TELEFONO, PALABRA_CLAVE, OFICINA, SUELDO, TIPO_EMPLEADO) " +
             "VALUES(:numeroDocumento, :tipoDocumento, :nombre, :nacionalidad, :direcciones, :direccionElectronica, " +
             ":telefono, :palabraClave, :oficina, :sueldo, :tipoEmpleado)", nativeQuery = true)
-    void insertarEmpleado(@Param("numeroDocumento") Long numeroDocumento, @Param("tipoDocumento") String tipoDocumento,
+    void insertarEmpleado(@Param("numeroDocumento") int numeroDocumento, @Param("tipoDocumento") String tipoDocumento,
                           @Param("nombre") String nombre, @Param("nacionalidad") String nacionalidad,
-                          @Param("direcciones") Long direcciones, @Param("direccionElectronica") String direccionElectronica,
-                          @Param("telefono") Long telefono, @Param("palabraClave") String palabraClave,
-                          @Param("oficina") String oficina, @Param("sueldo") Double sueldo, @Param("tipoEmpleado") String tipoEmpleado);
+                          @Param("direcciones") Integer direcciones, @Param("direccionElectronica") String direccionElectronica,
+                          @Param("telefono") Integer telefono, @Param("palabraClave") String palabraClave,
+                          @Param("oficina") String oficina, @Param("sueldo") Integer sueldo, @Param("tipoEmpleado") String tipoEmpleado);
 
     @Modifying
     @Transactional
@@ -35,17 +35,18 @@ public interface EmpleadoRepository extends JpaRepository<Empleado,Integer>{
             "DIRECCIONES = :direcciones, DIRECCION_ELECTRONICA = :direccionElectronica, TELEFONO = :telefono, " +
             "PALABRA_CLAVE = :palabraClave, OFICINA = :oficina, SUELDO = :sueldo, TIPO_EMPLEADO = :tipoEmpleado " +
             "WHERE NUMERO_DOCUMENTO = :numeroDocumento", nativeQuery = true)
-    void actualizarEmpleado(@Param("numeroDocumento") Long numeroDocumento, @Param("tipoDocumento") String tipoDocumento,
+    void actualizarEmpleado(@Param("numeroDocumento") Integer numeroDocumento, @Param("tipoDocumento") String tipoDocumento,
                             @Param("nombre") String nombre, @Param("nacionalidad") String nacionalidad,
-                            @Param("direcciones") Long direcciones, @Param("direccionElectronica") String direccionElectronica,
-                            @Param("telefono") Long telefono, @Param("palabraClave") String palabraClave,
-                            @Param("oficina") String oficina, @Param("sueldo") Double sueldo, @Param("tipoEmpleado") String tipoEmpleado);
+                            @Param("direcciones") Integer direcciones, @Param("direccionElectronica") String direccionElectronica,
+                            @Param("telefono") Integer telefono, @Param("palabraClave") String palabraClave,
+                            @Param("oficina") String oficina, @Param("sueldo") Integer sueldo, @Param("tipoEmpleado") String tipoEmpleado);
 
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM EMPLEADO WHERE NUMERO_DOCUMENTO = :numeroDocumento", nativeQuery = true)
-    void eliminarEmpleado(@Param("numeroDocumento") Long numeroDocumento);
+    void eliminarEmpleado(@Param("numeroDocumento") Integer numeroDocumento);
 
 
 }
+
 
