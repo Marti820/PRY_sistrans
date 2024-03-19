@@ -59,7 +59,11 @@ public class Oficina {
         this.num_puntos_atencion = num_puntos_atencion;
     }
 
-
+    @Override
+    public String toString()
+    {
+        return this.nombre+"|"+this.direccion+"|"+this.num_puntos_atencion;
+    }
     
 
     
