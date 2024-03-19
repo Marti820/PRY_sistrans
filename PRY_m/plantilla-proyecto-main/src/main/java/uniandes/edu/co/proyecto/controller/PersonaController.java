@@ -27,7 +27,7 @@ public class PersonaController {
     @GetMapping("/personas")
     public String personas(Model model) {
         model.addAttribute("personas", personaRepository.getPersonas());
-        return "personas";
+        return model.toString();
     }
 
     @GetMapping("/personas/new")
