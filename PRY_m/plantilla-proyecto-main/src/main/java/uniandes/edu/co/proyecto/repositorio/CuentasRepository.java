@@ -23,12 +23,12 @@ public interface CuentasRepository extends JpaRepository<Cuenta, Integer> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO CUENTAS (ID, ESTADO, TIPO, DINERO) VALUES(:id, :estado, :tipo, :dinero)", nativeQuery = true)
-    void insertarCuenta(@Param("id") Integer id, @Param("estado") String estado, @Param("tipo") String tipo, @Param("dinero") Double dinero);
+    void insertarCuenta(@Param("id") Integer id, @Param("estado") String estado, @Param("tipo") String tipo, @Param("dinero") int dinero);
 
     @Modifying
     @Transactional
     @Query(value = "UPDATE CUENTAS SET ESTADO = :estado, TIPO = :tipo, DINERO = :dinero WHERE ID = :id", nativeQuery = true)
-    void actualizarCuenta(@Param("id") Integer id, @Param("estado") String estado, @Param("tipo") String tipo, @Param("dinero") Double dinero);
+    void actualizarCuenta(@Param("id") Integer id, @Param("estado") String estado, @Param("tipo") String tipo, @Param("dinero") int dinero);
 
     @Modifying
     @Transactional

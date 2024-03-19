@@ -22,14 +22,14 @@ public class Cliente {
     private String nacionalidad;
     @ManyToOne
     @JoinColumn(name="direcciones", referencedColumnName = "id")
-    private Integer direcciones;
+    private Direccion direcciones;
     private String direccionElectronica;
     private int telefono;
     private String palabraClave;
     private String tipoCliente;
 
     public Cliente(Persona persona, String tipoDocumento, String nombre, String nacionalidad,
-            int direccion, String direccionElectronica, int telefono, String palabraClave,
+    Direccion direccion, String direccionElectronica, int telefono, String palabraClave,
             String tipoCliente) {
         //this.id = id;
         this.persona = persona;
@@ -69,10 +69,10 @@ public class Cliente {
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
-    public int getDirecciones() {
+    public Direccion getDirecciones() {
         return direcciones;
     }
-    public void setDirecciones(int direcciones) {
+    public void setDirecciones(Direccion direcciones) {
         this.direcciones = direcciones;
     }
     public String getDireccionElectronica() {
